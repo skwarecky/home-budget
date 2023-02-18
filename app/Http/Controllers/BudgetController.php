@@ -14,6 +14,18 @@ class BudgetController extends Controller
 {
 	public function __construct(protected BudgetService $budgetService){}
 
+	/**
+	 * @param Budget $budget
+	 * @return \Inertia\Response
+	 */
+	public function show(Budget $budget): \Inertia\Response
+	{
+		return Inertia::render('Budget/Show', ['budget' => $budget]);
+	}
+
+	/**
+	 * @return \Inertia\Response
+	 */
 	public function create(){
 		$types = Type::all(['name', 'id']);
 
@@ -22,7 +34,6 @@ class BudgetController extends Controller
 	}
 
 	public function store(BudgetPostRequest $request){
-
 		if (!$this->budgetService->store($request->all())){
 			return back()->with('message', 'Error occured while updating');
 		}
@@ -40,6 +51,13 @@ class BudgetController extends Controller
 			return back()->with('message', 'Error occured while updating');
 		}
 		return redirect('dashboard');
+
+	}
+
+
+	public function import(Budget $budget, Request $request){
+
+
 
 	}
 }

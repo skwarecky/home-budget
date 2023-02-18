@@ -34,11 +34,15 @@ Route::middleware('auth', 'verified')->group(function () {
 	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
+	Route::get('/budget/{budget}/show', [BudgetController::class, 'show'])->name('budget.show');
 	Route::get('/budget/create', [BudgetController::class, 'create'])->name('budget.create');
-	Route::get('/budget/edit', [BudgetController::class, 'edit'])->name('budget.edit');
+	Route::get('/budget/{budget}/edit', [BudgetController::class, 'edit'])->name('budget.edit');
+
 	Route::post('/budget', [BudgetController::class, 'store'])->name('budget.store');
 	Route::patch('/budget', [BudgetController::class, 'update'])->name('budget.update');
 	Route::delete('/budget', [BudgetController::class, 'destroy'])->name('budget.destroy');
+
+	Route::post('/budget/{budget}/import', [BudgetController::class, 'import'])->name('budget.import');
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

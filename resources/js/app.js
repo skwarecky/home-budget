@@ -7,23 +7,6 @@ import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 
-import 'vuetify/styles'
-import { createVuetify } from 'vuetify'
-import { aliases, fa } from 'vuetify/iconsets/fa4'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
-const vuetify = createVuetify({
-    components,
-    directives,
-    icons: {
-        defaultSet: 'fa',
-        aliases,
-        sets: {
-            fa,
-        }
-    },
-})
-
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 createInertiaApp({
@@ -33,7 +16,6 @@ createInertiaApp({
         return createApp({ render: () => h(app, props) })
             .use(plugin)
             .use(ZiggyVue, Ziggy)
-            .use(vuetify)
             .mount(el);
     },
 });
