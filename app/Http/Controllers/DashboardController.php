@@ -29,4 +29,9 @@ class DashboardController extends Controller
 			'budgets' => Budget::with('type')->get()
 		]);
 	}
+
+    public function store()
+    {
+        return 'eeee';
+    }
 }
